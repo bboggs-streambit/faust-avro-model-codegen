@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from faust_avro_code_gen.settings import Settings
+from faust_avro_model_codegen.settings import Settings
 
 
 def test_settings_from_toml_returns_expected_settings_object_from_pyproject_toml(

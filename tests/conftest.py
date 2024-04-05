@@ -11,10 +11,10 @@ import pytest
 import tomlkit
 from dataclasses_avroschema.faust import AvroRecord
 
-from faust_avro_code_gen.models_generator import FaustAvroModelGen
-from faust_avro_code_gen.schema_verifier import SchemaVerifier
-from faust_avro_code_gen.template_renderer import TemplateRenderer
-from faust_avro_code_gen.types import (
+from faust_avro_model_codegen.models_generator import FaustAvroModelGen
+from faust_avro_model_codegen.schema_verifier import SchemaVerifier
+from faust_avro_model_codegen.template_renderer import TemplateRenderer
+from faust_avro_model_codegen.types import (
     SchemaData,
     PythonAvroField,
     PythonAvroModel,

@@ -4,7 +4,7 @@ from unittest.mock import Mock, MagicMock
 import pytest
 from dataclasses_avroschema.faust import AvroRecord
 
-from faust_avro_code_gen.schema_verifier import SchemaNotAbleToBeVerified
+from faust_avro_model_codegen.schema_verifier import SchemaNotAbleToBeVerified
 
 
 def test_verifier_raises_schema_not_able_to_be_verified_when_check_sr_fails(

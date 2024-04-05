@@ -2,9 +2,9 @@ from pathlib import Path
 from types import ModuleType
 from unittest.mock import Mock, patch
 
-from faust_avro_code_gen.models_generator import FaustAvroModelGen
-from faust_avro_code_gen.template_renderer import TemplateRenderer
-from faust_avro_code_gen.types import SchemaData
+from faust_avro_model_codegen.models_generator import FaustAvroModelGen
+from faust_avro_model_codegen.template_renderer import TemplateRenderer
+from faust_avro_model_codegen.types import SchemaData
 
 
 def test_generate_module_passes_expected_arguments_to_write_method(

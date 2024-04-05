@@ -4,7 +4,7 @@ import httpx
 from dataclasses_avroschema import AvroModel
 from rich import print
 
-from faust_avro_code_gen.types import SchemaName
+from faust_avro_model_codegen.types import SchemaName
 
 
 class SchemaNotAbleToBeVerified(Exception):

@@ -3,11 +3,11 @@ from pathlib import Path
 import httpx
 import typer
 
-from faust_avro_code_gen.models_generator import FaustAvroModelGen
-from faust_avro_code_gen.schema_verifier import SchemaVerifier
-from faust_avro_code_gen.settings import Settings
-from faust_avro_code_gen.template_renderer import TemplateRenderer
-from faust_avro_code_gen.types import SchemaData
+from faust_avro_model_codegen.models_generator import FaustAvroModelGen
+from faust_avro_model_codegen.schema_verifier import SchemaVerifier
+from faust_avro_model_codegen.settings import Settings
+from faust_avro_model_codegen.template_renderer import TemplateRenderer
+from faust_avro_model_codegen.types import SchemaData
 
 
 def main(

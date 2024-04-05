@@ -1,6 +1,6 @@
 import pytest
 
-from faust_avro_code_gen.types import (
+from faust_avro_model_codegen.types import (
     SchemaData,
     CodeGenResultData,
     PythonAvroModel,

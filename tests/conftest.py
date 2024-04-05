@@ -152,7 +152,7 @@ def pyproject_toml(outfile: Path):
     # Define the configuration keys and example values
     config = {
         "tool": {
-            "faust_avro_code_gen": {
+            "faust_avro_model_codegen": {
                 "schema_dir": "tests/schemas",
                 "outfile": str(outfile),
                 "schema_registry_url": "http://localhost:8082",
@@ -182,7 +182,7 @@ def standalone_toml(outfile: Path):
     }
 
     # Create a faust_avro_code_gen.toml file in the temporary directory
-    standalone_toml = Path("faust_avro_code_gen.toml")
+    standalone_toml = Path("faust_avro_model_codegen.toml")
     standalone_toml.write_text(tomlkit.dumps(config))
 
     yield standalone_toml

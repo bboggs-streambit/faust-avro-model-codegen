@@ -19,7 +19,7 @@ You can configure the library for your application using either `pyproject.toml`
 Add the following section to your `pyproject.toml`:
 
 ```toml
-[tool.faust_avro_code_gen]
+[tool.faust_avro_model_codegen]
 schema_dir = "path/to/your/schemas"
 outfile = "path/to/your/models.py"
 schema_registry_url = "http://localhost:8081"
@@ -28,7 +28,7 @@ faust_app_models_module = "models"
 
 ### Using a standalone configuration file
 
-Create a `faust_avro_code_gen.toml` file in your project root with the following content:
+Create a `faust_avro_model_codegen.toml` file in your project root with the following content:
 
 ```toml
 schema_dir = "path/to/your/schemas"

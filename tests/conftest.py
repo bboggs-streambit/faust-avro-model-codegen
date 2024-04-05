@@ -11,6 +11,7 @@ import pytest
 import tomlkit
 from dataclasses_avroschema.faust import AvroRecord
 
+from faust_avro_model_codegen import TemplateWriter
 from faust_avro_model_codegen.models_generator import FaustAvroModelGen
 from faust_avro_model_codegen.schema_verifier import SchemaVerifier
 from faust_avro_model_codegen.template_renderer import TemplateRenderer
@@ -199,7 +200,9 @@ def mock_verifier() -> Mock:
 @pytest.fixture
 def mock_code_gen(mock_verifier: Mock) -> FaustAvroModelGen:
     return FaustAvroModelGen(
-        renderer=TemplateRenderer.from_current_directory(), verifier=mock_verifier
+        renderer=TemplateRenderer.from_current_directory(),
+        verifier=mock_verifier,
+        writer=TemplateWriter(),
     )
 
 

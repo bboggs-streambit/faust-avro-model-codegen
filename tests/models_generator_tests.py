@@ -8,14 +8,10 @@ from faust_avro_model_codegen.types import SchemaData
 
 
 def test_generate_module_passes_expected_arguments_to_write_method(
-    all_schemas: list[SchemaData], outfile: Path
+    all_schemas: list[SchemaData], outfile: Path, mock_code_gen: FaustAvroModelGen
 ):
-    mock_verifier = Mock()
-    model_gen = FaustAvroModelGen(
-        renderer=TemplateRenderer.from_current_directory(), verifier=mock_verifier
-    )
-    with patch.object(model_gen, "write") as mock_write:
-        model_gen.generate_module(all_schemas, outfile)
+    with patch.object(mock_code_gen, "write") as mock_write:
+        mock_code_gen.generate_module(all_schemas, outfile)
         [(actual_out, actual_generated), _] = mock_write.call_args
         expected_generated = (
             '""" NOTICE!!\n'

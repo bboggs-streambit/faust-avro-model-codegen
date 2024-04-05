@@ -1,8 +1,11 @@
-import dataclasses
 import tomlkit
 from pathlib import Path
 
 from pydantic import BaseModel
+
+
+class ConfigNotFoundError(Exception):
+    pass
 
 
 class Settings(BaseModel):
@@ -14,16 +17,18 @@ class Settings(BaseModel):
     @classmethod
     def from_toml(cls) -> "Settings":
         pyproject_toml = Path("pyproject.toml")
-        standalone_toml = Path("faust_avro_code_gen.toml")
+        standalone_toml = Path("faust_avro_model_codegen.toml")
         if cls.pyproject_config_exists(pyproject_toml):
             return cls(
                 **tomlkit.loads(pyproject_toml.read_bytes())["tool"][
-                    "faust_avro_code_gen"
+                    "faust_avro_model_codegen"
                 ]
             )
         if standalone_toml.exists():
             return cls(**tomlkit.loads(standalone_toml.read_bytes()).unwrap())
-        return cls()
+        raise ConfigNotFoundError(
+            "Please provide a configuration in a pyproject.toml under [tools.faust_avro_model_codegen] or faust_avro_model_codegen.toml file."
+        )
 
     @classmethod
     def pyproject_config_exists(cls, pyproject_toml: Path) -> bool:
@@ -31,6 +36,6 @@ class Settings(BaseModel):
             pyproject_toml.exists()
             and tomlkit.loads(pyproject_toml.read_bytes())
             .get("tool", {})
-            .get("faust_avro_code_gen")
+            .get("faust_avro_model_codegen")
             is not None
         )

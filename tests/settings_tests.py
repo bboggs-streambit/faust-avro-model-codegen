@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from faust_avro_model_codegen.settings import Settings
+import pytest
+
+from faust_avro_model_codegen.settings import Settings, ConfigNotFoundError
 
 
 def test_settings_from_toml_returns_expected_settings_object_from_pyproject_toml(
@@ -30,6 +32,5 @@ def test_settings_from_toml_returns_expected_settings_object_from_standalone_tom
 
 
 def test_settings_from_toml_returns_default_settings_object_when_no_toml_files_exist():
-    actual = Settings.from_toml()
-    expected = Settings()
-    assert actual == expected
+    with pytest.raises(ConfigNotFoundError):
+        Settings.from_toml()

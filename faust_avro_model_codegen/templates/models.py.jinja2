@@ -6,7 +6,9 @@ import typing, enum
 
 from dataclasses import dataclass, field
 from dataclasses_avroschema import types, AvroModel
-from dataclasses_avroschema.avrodantic import CT
+from dataclasses_avroschema.schema_generator import CT
+
+
 
 {% for d in deps %}
 {{ d }}

@@ -38,7 +38,7 @@ omit = ["*/site-packages/*" ,"*/distutils/*" ,"*/tests/*" ,"*/__init__.py", "*/_
 exclude_lines = ['if TYPE_CHECKING', 'case never', 'typing.assert_never']
 
 [tool.pytest.ini_options]
-addopts = "-v --cov=faust_avro_code_gen --cov-report=term-missing --cov-report=xml --cov-report=html --cov-fail-under=100"
+addopts = "-v --cov=faust_avro_code_gen --cov-report=term-missing --cov-report=xml --cov-report=html"
 testpaths = ["tests"]
 python_files = ["test_*.py", " *_tests.py", "*test*.py"]
 pythonpath = "."

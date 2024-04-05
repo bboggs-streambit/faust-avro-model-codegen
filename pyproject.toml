@@ -1,10 +1,11 @@
 [tool.poetry]
 name = "faust-avro-model-codegen"
-version = "0.1.0"
+version = "0.1.1"
 description = "Generate Faust Avro Models from Avro Schema files."
 authors = ["Sean Zicari <szicari@streambit.software, Brad Boggs <bboggs@streambit.software>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/bboggs-streambit/faust-avro-model-codegen"
 
 [tool.poetry.dependencies]
 python = ">=3.10"

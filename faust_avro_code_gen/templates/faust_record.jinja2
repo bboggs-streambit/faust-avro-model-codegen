@@ -1,0 +1,37 @@
+import typing, enum, dataclasses, datetime
+
+from dataclasses import dataclass, field
+from dataclasses_avroschema.avrodantic import CT
+from dataclasses_avroschema.faust import AvroRecord
+
+
+@dataclass
+class {{ c.name }}(AvroRecord):
+    def __post_init__(self) -> None:
+        for _field in dataclasses.fields(self):
+            value = getattr(self, _field.name)
+            if isinstance(value, dataclasses.Field):
+                setattr(self, _field.name, value.default)
+            if isinstance(value, typing.List):
+                item: enum.Enum
+                for index, item in enumerate(value):
+                    if issubclass(item.__class__, enum.Enum):
+                        value[index] = item.value
+    {% for field in c.fields -%}
+    {{ field.name }}: {{ field.type }} = field(metadata={"doc": "{{ field.doc }}"{% if field.has_default %}, "default": {{ field.default }}{% endif %}}{% if field.has_default %}, default={{ field.default }}{% endif %})
+    {% endfor %}
+
+    {% if c.example %}
+    @classmethod
+    def avro_schema_to_python(
+    cls: typing.Type[CT],
+    parent: typing.Optional[AvroModel] = None,
+    case_type: typing.Optional[str] = None,
+    ) -> typing.Dict[str, typing.Any]:
+        return {**super().avro_schema_to_python(parent, case_type), "example": {{ c.example }}}
+    {% endif %}
+
+    {% if c.namespace -%}
+    class Meta:
+        namespace = "{{ c.namespace }}"
+    {% endif %}

@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "BlogPost",
+  "namespace": "example.avro",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "content",
+      "type": "string"
+    },
+    {
+      "name": "author",
+      "type": "string"
+    }
+  ]
+}

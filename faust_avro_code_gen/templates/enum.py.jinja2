@@ -1,0 +1,4 @@
+class {{ c.name }}(str, enum.Enum):
+    {% for value in c.values -%}
+    {{ value|upper }} = "{{ value }}"
+    {% endfor %}

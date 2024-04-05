@@ -1,0 +1,66 @@
+{
+  "namespace": "example.avro",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "favorite_number",
+      "type": [
+        "int",
+        "null"
+      ]
+    },
+    {
+      "name": "favorite_colors",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "enum",
+          "name": "Color",
+          "symbols": [
+            "RED",
+            "GREEN",
+            "BLUE"
+          ]
+        }
+      }
+    },
+    {
+      "name": "new_field",
+      "type": [
+        "null",
+        "string"
+      ],
+      "default": null
+    },
+    {
+      "name": "additional_field",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "type": "enum",
+            "name": "AdditionalColor",
+            "symbols": [
+              "YELLOW",
+              "PURPLE",
+              "ORANGE"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "timestamp_field",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
